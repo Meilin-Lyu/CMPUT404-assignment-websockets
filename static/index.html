@@ -24,7 +24,7 @@
   </head>
   <body bgcolor="white" height="100%" width="100%">
     <div id="debug"></div>
-    <canvas id="c" width="100%" height="100%" style="-webkit-tap-highlight-color: transparent;"></canvas>
+    <canvas id="c" width="1000px" height="1000px" style="-webkit-tap-highlight-color: transparent;"></canvas>
 
     <script>
       // Fix me
@@ -52,9 +52,12 @@ function drawCircle(context,entity) {
         var x = entity["x"];
         var y = entity["y"];
         //moveTo(x,y);
-        fillStyle = entity["colour"];
+        var grd = createLinearGradient(10,10,20,20);
+        grd.addColorStop(0,"white");
+        grd.addColorStop(1,"pink");
+        fillStyle = grd;
         strokeStyle = fillStyle;
-        arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);
+        fillRect(x,y,20,20);
         stroke();
     }
 }
@@ -258,6 +261,7 @@ function wsSetup() {
     socket = new WebSocket(url);
     socket.onopen = function() {
         //XXX: TODO What are you going to do here?
+        //nothing to do.
     };
     socket.onerror = function(msg) {
         debug("WebSocket Error:" + msg.data);
