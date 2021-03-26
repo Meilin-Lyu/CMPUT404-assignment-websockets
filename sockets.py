@@ -115,7 +115,7 @@ def read_ws(ws,client):
     except:
         pass
 
-# refer to https://github.com/abramhindle/WebSocketsExamples from line 126-144 by  Abram Hindle
+# refer to https://github.com/abramhindle/WebSocketsExamples/blob/master/chat.py from line 126-144 by  Abram Hindle
 @sockets.route('/subscribe')
 def subscribe_socket(ws):
     '''Fufill the websocket URL of /subscribe, every update notify the

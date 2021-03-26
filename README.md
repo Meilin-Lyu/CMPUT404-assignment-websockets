@@ -19,6 +19,7 @@ pip install -r requirements.txt
 
 Contributors / Licensing
 ========================
+Name: Meilin Lyu
 
 Generally everything is LICENSE'D under the Apache 2 license by Abram Hindle.
 
@@ -59,3 +60,10 @@ Contributors
 * Mark Galloway
 * Abram Hindle
 * Cole Mackenzie
+
+Citation
+========
+In socket.py, class Client, function send_all(), send_all_json(),read_ws(), subscribe_socket() is refer to 
+https://github.com/abramhindle/WebSocketsExamples/blob/master/chat.py
+In index.html, using ssocket.send() is refer to https://k6.io/docs/javascript-api/k6-ws/socket/socket-send-data 
+
