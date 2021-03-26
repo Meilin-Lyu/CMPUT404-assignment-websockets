@@ -128,8 +128,10 @@ function addEntity(entity, data) {
     world[entity] = data;
     drawNextFrame(); // (but should we?)
     //XXX: Send a XHTML Request that updates the entity you just modified!
+    // create a dictionary to store the update data.
     var updateData = {};
     updateData[entity]=data;
+    // refer to https://k6.io/docs/javascript-api/k6-ws/socket/socket-send-data 
     socket.send(JSON.stringify(updateData));
     //socket.send(JSON.stringify({"entity": data }));
 }
@@ -210,7 +212,7 @@ mouse = (function() {
                 var y = pos[1];
 	        if (self.clicked != 0) {
 	            //self.squeakin(x,y);
-                    self.callListeners(self.mousedraggers,x,y,self.clicked,e);
+                self.callListeners(self.mousedraggers,x,y,self.clicked,e);
 	        }
                 self.callListeners(self.mousemovers,x,y,self.clicked,e);
             }
@@ -267,11 +269,10 @@ function wsSetup() {
         debug("WebSocket Error:" + msg.data);
     };
     socket.onmessage = function(msg) {
-
         try {
             var message = JSON.parse(msg.data);
-            for(let entity in message){
-                world[entity]=message[entity];
+            for(entity in message){
+                world[entity] = message[entity];
             }
             drawNextFrame();
             //XXX: TODO What are you going to do here?
