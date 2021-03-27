@@ -133,7 +133,6 @@ function addEntity(entity, data) {
     updateData[entity]=data;
     // refer to https://k6.io/docs/javascript-api/k6-ws/socket/socket-send-data 
     socket.send(JSON.stringify(updateData));
-    //socket.send(JSON.stringify({"entity": data }));
 }
 var counter = 0;
 function addEntityWithoutName(data) {
